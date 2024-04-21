@@ -1,5 +1,7 @@
 import pandas as pd
+from sklearn.preprocessing import StandardScaler
 
+# Add path to the function
 def read_data(path=None):
     '''
     Reads the dataset and returns it.
@@ -59,17 +61,6 @@ def add_features(daily_mood_features, list_features=list_features):
     # Merge the pivoted data with the daily mood data to get a single dataframe with all features and the target
     full_data = daily_mood_features.merge(daily_pivoted, on=['id', 'date'], how='left')
     # Display the merged dataset structure
-    # Function to classify the value
-    def classify_value(value):
-        if value < 0 or value > 10:
-            return "Invalid value"  # Handling out-of-range values
-        elif value <=7:
-            return "bad"
-        else:
-            return "good"
-
-    # Apply the function to create a new column based on 'NumericValue'
-    full_data['mood_category'] = full_data['daily_mood'].apply(classify_value)
     return full_data
 
 def impute_missing_values(full_data):
@@ -92,9 +83,30 @@ def impute_missing_values(full_data):
     data_cleaned.isnull().sum()
     return data_cleaned
 
-def get_clean_data():
-    data_cleaned = impute_missing_values(add_features(feature_engineer(read_data())))
+# Scaling all numerical variables
+def scale_variables(data):
+    # scale all variables in dataset    
+    numeric_cols = data.select_dtypes(include=['number']).columns
+    # Initialize the scaler
+    scaler = StandardScaler()
+    # Fit and transform the data
+    data[numeric_cols] = scaler.fit_transform(data[numeric_cols])
+
+     # Function to classify the value
+    def classify_value(value):
+        if value < 0:
+            return "below average"
+        else:
+            return "above average"
+
+    # Apply the function to create a new column based on 'NumericValue'
+    data['mood_category'] = data['daily_mood'].apply(classify_value)
+    return data
+
+def get_clean_data(path=None):
+    data_cleaned = scale_variables(impute_missing_values(add_features(feature_engineer(read_data(path=path)))))
     return data_cleaned
+
 
 if __name__ == "__main__":
     data = read_data()
@@ -106,7 +118,7 @@ if __name__ == "__main__":
     print("Missing values have been imputed.")
     print(len(full_data))
     data_cleaned = impute_missing_values(full_data)
-    print(data_cleaned.head(10))
-    print(len(data_cleaned))
-    data_cleaned[['id', 'date', 'daily_mood', 'mood_category', 'avg_mood', 'circumplex.valence', 'circumplex.arousal']].tail(5).to_latex('data_cleaned.tex')
+    scaled_data = scale_variables(data_cleaned)
+    scaled_data[['id', 'date', 'daily_mood', 'mood_category', 'avg_mood', 'circumplex.valence', 'circumplex.arousal']].tail(5).to_latex('data.tex')
+    print(scaled_data.head(10))
 
