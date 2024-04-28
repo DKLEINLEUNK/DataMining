@@ -284,4 +284,3 @@ if __name__ == "__main__":
 
     model, y_pred, y_test = conduct_SVR(data_clean, predictors)
     # create_confusion_matrix(y_test, y_pred)
-    # history = conduct_RNN(data, predictors)
