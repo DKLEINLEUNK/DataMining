@@ -3,6 +3,8 @@ import pandas as pd
 import numpy as np
 from sklearn.impute import SimpleImputer
 from imblearn.over_sampling import SMOTE
+from sklearn.preprocessing import StandardScaler
+
 os.chdir("C:\\Users\\Kaleem\\Documents\\Courses\\Data Mining\\DataMining\\Assignment 2")
 
 # Read the CSV file
@@ -19,17 +21,18 @@ df['day'] = df['date_time'].dt.day
 df['hour'] = df['date_time'].dt.hour
 ###### Convert columns to categorical
 categorical_cols = [
-    'srch_id', 'promotion_flag', 'random_bool', 'prop_id',
+    'srch_id', 'promotion_flag', 'random_bool', 'prop_id', 'site_id', 
     'visitor_location_country_id', 'srch_destination_id', 'prop_country_id'
 ]
 for col in categorical_cols:
     df[col] = df[col].astype('category')
 
 ###### Convert columns to boolean
-boolean_cols= ['promotion_flag', 'random_bool', 'booking_bool']
+boolean_cols= ['promotion_flag', 'random_bool', 'booking_bool', 'click_bool', 'srch_saturday_night_bool', 'prop_brand_bool']
 
 for col in boolean_cols:
     df[col] = df[col].astype(bool)
+
 # Drop original 'date_time' column
 df.drop(columns=['date_time'], inplace=True)
 
@@ -40,6 +43,18 @@ df = df.loc[:, df.isnull().mean() < threshold]
 # Remove columns with no variance
 nunique = df.apply(pd.Series.nunique)
 df = df.loc[:, nunique != 1]
+
+# Scale numeric columns
+# Create a DataFrame
+# Select only the numeric columns
+numeric_cols = df.select_dtypes(include=['int64', 'float64']).columns
+numeric_cols = numeric_cols.drop(['year', 'month', 'day', 'hour'])
+# Initialize the scaler
+scaler = StandardScaler()
+# Fit and transform the numeric data
+df[numeric_cols] = scaler.fit_transform(df[numeric_cols])
+
+
 print("Data Preprocessing done successfully")
 #########################################################################################
 #####     Imputation
@@ -65,6 +80,7 @@ X_resampled, y_resampled = smote.fit_resample(X, y)
 
 # Combine the resampled data
 df_resampled = pd.concat([pd.DataFrame(X_resampled, columns=X.columns), pd.Series(y_resampled, name='booking_bool')], axis=1)
+df_resampled.head(10)
 
 # Display the cleaned dataset information
 df_resampled.info(), df_resampled.describe()
@@ -92,14 +108,14 @@ df['day'] = df['date_time'].dt.day
 df['hour'] = df['date_time'].dt.hour
 ###### Convert columns to categorical
 categorical_cols = [
-    'srch_id', 'promotion_flag', 'random_bool', 'prop_id',
+    'srch_id', 'promotion_flag', 'random_bool', 'prop_id', "site_id"
     'visitor_location_country_id', 'srch_destination_id', 'prop_country_id'
 ]
 for col in categorical_cols:
     df[col] = df[col].astype('category')
 
 ###### Convert columns to boolean
-boolean_cols= ['promotion_flag', 'random_bool']
+boolean_cols= ['promotion_flag', 'random_bool', 'srch_saturday_night_bool', 'prop_brand_bool']
 
 for col in boolean_cols:
     df[col] = df[col].astype(bool)
@@ -113,10 +129,17 @@ df = df.loc[:, df.isnull().mean() < threshold]
 # Remove columns with no variance
 nunique = df.apply(pd.Series.nunique)
 df = df.loc[:, nunique != 1]
+
+# Scale numeric columns
+numeric_cols = df.select_dtypes(include=['int64', 'float64']).columns
+numeric_cols = numeric_cols.drop(['year', 'month', 'day', 'hour'])
+# Initialize the scaler
+scaler = StandardScaler()
+# Fit and transform the numeric data
+df[numeric_cols] = scaler.fit_transform(df[numeric_cols])
 print("Data Preprocessing done successfully")
 #########################################################################################
 #####     Imputation
-numeric_cols = df.select_dtypes(include=[np.number]).columns
 categorical_cols = df.select_dtypes(include=[object, 'category']).columns
 
 numeric_imputer = SimpleImputer(strategy='median')
