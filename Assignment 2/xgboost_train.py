@@ -23,6 +23,7 @@ print("Data read successfully")
 #####     Train-Test Split and Modelling
 # Convert the data to DMatrix format for XGBoost
 X_train = df_resampled.drop(columns=['booking_bool', "click_bool", "position"])
+X_train = X_train.drop(columns=['srch_id', 'prop_id', 'date_time', 'year', 'month', 'day', 'hour'])
 y_train = df_resampled['booking_bool']
 
 
