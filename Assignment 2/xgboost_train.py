@@ -43,7 +43,7 @@ params = {
 }
 
 # Train the XGBoost model
-bst = xgb.train(params, dtrain, num_boost_round=100)
+bst = xgb.train(params, dtrain, num_boost_round=500)
 print("Model trained successfully")
 
 
