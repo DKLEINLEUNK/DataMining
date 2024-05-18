@@ -13,22 +13,26 @@ import xgboost as xgb
 from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
 
 
-os.chdir("C:\\Users\\Kaleem\\Documents\\Courses\\Data Mining\\DataMining\\Assignment 2")
+# os.chdir("C:\\Users\\Kaleem\\Documents\\Courses\\Data Mining\\DataMining\\Assignment 2")
+PATH_TRAIN = "/home/david/Studies/Data Mining Techniques/repository/Assignment 2/data/train_cleaned_100_000.csv"
+PATH_TEST = "/home/david/Studies/Data Mining Techniques/repository/Assignment 2/data/test_cleaned_100_000.csv"
+
 # Read the CSV file
-df_resampled = pd.read_csv('data\\train_cleaned.csv')
-df_test = pd.read_csv('data\\test_cleaned.csv')
+df_resampled = pd.read_csv(PATH_TRAIN)
+df_test = pd.read_csv(PATH_TEST)
 print("Data read successfully")
+
 
 ############################################################################################
 #####     Train-Test Split and Modelling
+
 # Convert the data to DMatrix format for XGBoost
 X_train = df_resampled.drop(columns=['booking_bool', "click_bool", "position"])
-X_train = X_train.drop(columns=['srch_id', 'prop_id', 'date_time', 'year', 'month', 'day', 'hour'])
+# X_train = X_train.drop(columns=['srch_id', 'prop_id', 'date_time', 'year', 'month', 'day', 'hour'])  # NOTE - HAD TO BE COMMENTED TO MAKE THE CODE RUN
 y_train = df_resampled['booking_bool']
 
-
-X = df_resampled.drop(columns=['booking_bool'])
-y = df_resampled['booking_bool']
+# X = df_resampled.drop(columns=['booking_bool'])
+# y = df_resampled['booking_bool']
 # X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
 # Convert the data to DMatrix format for XGBoost
@@ -52,7 +56,7 @@ print("Model trained successfully")
 ##### Make predictions on the test set and save the results
 
 fitted_results = bst.predict(dtest)
-np.argmax(fitted_results)
+# np.argmax(fitted_results)  # NOTE - I don't think this line is doing anything
 # fitted_results.head(10)
 # Rank the results
 ranked_results = np.argsort(-fitted_results)
