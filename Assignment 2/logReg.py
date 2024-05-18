@@ -15,6 +15,7 @@ logging.info("Used data that was not scaled")
 @timing_decorator
 def logReg(df, test=None, save_df=False, output=False):
     X = df.drop(columns=['srch_id', 'booking_bool', 'click_bool', 'position'])
+    X.columns
     y = df['booking_bool']
     
     # Fit the logistic regression model
@@ -25,7 +26,7 @@ def logReg(df, test=None, save_df=False, output=False):
     if test is not None:
         # Predict on the test set
         X_test = test.drop(columns=['srch_id'])
-        fitted_results = result.predict(sm.add_constant(X_test))
+        fitted_results = result.predict(logit_model.add_constant(X_test))
         # Rank the results
         ranked_results = np.argsort(-fitted_results)
         sorted_test = test.iloc[ranked_results]
@@ -33,7 +34,7 @@ def logReg(df, test=None, save_df=False, output=False):
     else:
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-        fitted_results = result.predict(sm.add_constant(X_test))
+        fitted_results = result.predict(logit_model.add_constant(X_test))
         
         y_pred = (fitted_results > 0.5).astype(int)
         accuracy = accuracy_score(y_test, y_pred)

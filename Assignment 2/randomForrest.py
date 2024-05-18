@@ -5,6 +5,7 @@ from sklearn.ensemble import RandomForestRegressor
 import logging
 from sklearn.metrics import mean_squared_error, r2_score, accuracy_score, confusion_matrix, classification_report
 from helper import timing_decorator
+# import dask.dataframe as dd
 
 
 # Set up logging
@@ -21,9 +22,7 @@ def randomForrest(df, test=None, save_df=False, output=False):
     # y = df['booking_bool']
     
     # Initialize the Random Forest Regressor
-    rf_regressor = RandomForestRegressor(n_estimators=100, n_jobs=-1, random_state=42)
-
-
+    rf_regressor = RandomForestRegressor(n_estimators=10, n_jobs=-1, random_state=42)
 
     if test is not None:
         X_train = df.drop(columns=["srch_id", 'booking_bool', "click_bool", "position"])
@@ -78,10 +77,23 @@ def randomForrest(df, test=None, save_df=False, output=False):
     
 
 if __name__ == "__main__":
-    import os
-    os.chdir("C:\\Users\\Kaleem\\Documents\\Courses\\Data Mining\\DataMining\\Assignment 2")
+    # import cudf
+    from datetime import datetime
+    start_time = datetime.now()
+    # %load_ext cudf.pandas
+    # import os
+    #    os.chdir("C:\\Users\\Kaleem\\Documents\\Courses\\Data Mining\\DataMining\\Assignment 2")
     # Load the data
 
-    df = pd.read_csv("data\\train_cleaned.csv")
-    test = pd.read_csv("data\\test_cleaned.csv")
+
+    PATH_train = "/mnt/c/Users/Kaleem/Documents/Courses/Data Mining/DataMining/Assignment 2/data/train_cleaned.csv"
+    # df = cudf.read_csv(PATH_train)
+    df = pd.read_csv(PATH_train, nrows=100_000)
+
+    # test = pd.read_csv("data\\test_cleaned.csv")
     randomForrest(df, output=False)
+
+    end_time = datetime.now()
+
+    print('Duration: {}'.format(end_time - start_time))
+    logging.info('Duration: {}'.format(end_time - start_time))
