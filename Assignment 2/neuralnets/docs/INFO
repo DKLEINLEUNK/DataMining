@@ -1,0 +1,15 @@
+# 1. Feedforward Neural Networks
+Feedforward Neural Networks, also known as Multi-Layer Perceptrons (MLPs), are the simplest type of neural network used for classification problems.
+
+### Structure
+    Input layer: One node for each feature.
+    One or more hidden layers with a number of neurons.
+    Output layer: One node for binary classification (use sigmoid activation).
+
+##### Pros
+    Easy to implement.
+    Can handle a large number of features and samples.
+    Suitable for structured/tabular data.
+
+##### Cons
+    Might not capture complex relationships without deep architecture.
