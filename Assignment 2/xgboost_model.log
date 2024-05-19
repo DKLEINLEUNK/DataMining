@@ -1,0 +1,157 @@
+2024-05-18 16:48:20,008 - INFO - Used data that was not scaled
+2024-05-18 16:51:09,730 - INFO - Used data that was not scaled
+2024-05-18 16:51:26,910 - INFO - Used data that was not scaled
+2024-05-18 16:51:29,168 - INFO - Accuracy: 0.9725
+2024-05-18 16:51:29,169 - INFO - Confusion Matrix:
+[[19449    13]
+ [  537     1]]
+2024-05-18 16:51:29,169 - INFO - Classification Report:
+              precision    recall  f1-score   support
+
+       False       0.97      1.00      0.99     19462
+        True       0.07      0.00      0.00       538
+
+    accuracy                           0.97     20000
+   macro avg       0.52      0.50      0.49     20000
+weighted avg       0.95      0.97      0.96     20000
+
+2024-05-18 16:51:46,001 - INFO - Used data that was not scaled
+2024-05-18 16:54:56,521 - INFO - Used data that was not scaled
+2024-05-18 16:56:02,398 - INFO - All data trained (without CUDA)
+2024-05-18 17:03:19,356 - INFO - All data trained (without CUDA)
+2024-05-19 09:04:46,048 - INFO - All data trained (without CUDA)
+2024-05-19 09:05:05,494 - INFO - All data trained (without CUDA)
+2024-05-19 09:07:33,199 - INFO - All data trained (without CUDA)
+2024-05-19 09:07:36,391 - INFO - Accuracy: 0.97194
+2024-05-19 09:07:36,391 - INFO - Confusion Matrix:
+[[97181    17]
+ [ 2789    13]]
+2024-05-19 09:07:36,391 - INFO - Classification Report:
+              precision    recall  f1-score   support
+
+       False       0.97      1.00      0.99     97198
+        True       0.43      0.00      0.01      2802
+
+    accuracy                           0.97    100000
+   macro avg       0.70      0.50      0.50    100000
+weighted avg       0.96      0.97      0.96    100000
+
+2024-05-19 09:07:59,557 - INFO - All data trained (without CUDA)
+2024-05-19 09:09:08,960 - INFO - All data trained (without CUDA)
+2024-05-19 09:11:03,134 - INFO - All data trained (without CUDA)
+2024-05-19 09:11:06,040 - INFO - init
+2024-05-19 09:11:06,306 - INFO - All data trained (without CUDA)
+2024-05-19 09:14:41,932 - INFO - All data trained (without CUDA)
+2024-05-19 09:15:05,593 - INFO - All data trained (without CUDA)
+2024-05-19 09:16:25,203 - INFO - All data trained (without CUDA)
+2024-05-19 09:17:12,555 - INFO - All data trained (without CUDA)
+2024-05-19 09:20:53,100 - INFO - All data trained (without CUDA)
+2024-05-19 09:23:16,427 - INFO - Accuracy: 0.9802826719742294
+2024-05-19 09:23:16,437 - INFO - Confusion Matrix:
+[[963292    114]
+ [ 28397 454184]]
+2024-05-19 09:23:16,437 - INFO - Classification Report:
+              precision    recall  f1-score   support
+
+       False       0.97      1.00      0.99    963406
+        True       1.00      0.94      0.97    482581
+
+    accuracy                           0.98   1445987
+   macro avg       0.99      0.97      0.98   1445987
+weighted avg       0.98      0.98      0.98   1445987
+
+2024-05-19 09:23:57,604 - INFO - All data trained (without CUDA)
+2024-05-19 09:24:23,431 - INFO - All data trained (without CUDA)
+2024-05-19 09:25:42,738 - INFO - Accuracy: 0.9802826719742294
+2024-05-19 09:25:42,749 - INFO - Confusion Matrix:
+[[963292    114]
+ [ 28397 454184]]
+2024-05-19 09:25:42,749 - INFO - Classification Report:
+              precision    recall  f1-score   support
+
+       False       0.97      1.00      0.99    963406
+        True       1.00      0.94      0.97    482581
+
+    accuracy                           0.98   1445987
+   macro avg       0.99      0.97      0.98   1445987
+weighted avg       0.98      0.98      0.98   1445987
+
+2024-05-19 09:25:42,936 - INFO - Time taken: 0:01:19.504863
+2024-05-19 10:04:00,147 - INFO - init
+2024-05-19 10:05:57,340 - INFO - All data trained (without CUDA)
+2024-05-19 10:08:37,231 - INFO - Loading data 500_000 (without CUDA)
+2024-05-19 10:09:32,664 - INFO - Loading data 500_000 (without CUDA)
+2024-05-19 10:09:33,276 - INFO - Time taken: 0:00:00.612642
+2024-05-19 10:09:50,944 - INFO - Loading all data (without CUDA)
+2024-05-19 10:10:11,094 - INFO - Time taken: 0:00:20.148755
+2024-05-19 10:12:24,643 - INFO - Loading all data (CUDA)
+2024-05-19 10:12:28,343 - INFO - init
+2024-05-19 10:12:29,040 - INFO - Time taken: 0:00:04.396182
+2024-05-19 10:12:47,519 - INFO - Loading all data (CUDA) 200 partitions
+2024-05-19 10:12:49,339 - INFO - init
+2024-05-19 10:12:50,040 - INFO - Time taken: 0:00:02.520231
+2024-05-19 10:13:05,475 - INFO - Loading all data (CUDA) 1000 partitions
+2024-05-19 10:13:07,301 - INFO - init
+2024-05-19 10:13:09,225 - INFO - Time taken: 0:00:03.749616
+2024-05-19 10:13:35,130 - INFO - Loading all data (CUDA) 2000 partitions
+2024-05-19 10:13:36,949 - INFO - init
+2024-05-19 10:13:40,331 - INFO - Time taken: 0:00:05.200366
+2024-05-19 10:19:43,544 - INFO - Loading and training (without CUDA)
+2024-05-19 10:20:33,710 - INFO - Loading and training (without CUDA)
+2024-05-19 10:25:58,959 - INFO - Loading and training (without CUDA)
+2024-05-19 10:27:30,612 - INFO - Accuracy: 0.9802826719742294
+2024-05-19 10:27:30,620 - INFO - Confusion Matrix:
+[[963292    114]
+ [ 28397 454184]]
+2024-05-19 10:27:30,621 - INFO - Classification Report:
+              precision    recall  f1-score   support
+
+       False       0.97      1.00      0.99    963406
+        True       1.00      0.94      0.97    482581
+
+    accuracy                           0.98   1445987
+   macro avg       0.99      0.97      0.98   1445987
+weighted avg       0.98      0.98      0.98   1445987
+
+2024-05-19 10:27:30,874 - INFO - Time taken: 0:01:31.914765
+2024-05-19 10:28:17,828 - INFO - Loading and training (without CUDA)
+2024-05-19 10:28:21,718 - INFO - init
+2024-05-19 10:28:56,782 - INFO - Loading and training (with CUDA)
+2024-05-19 10:28:58,654 - INFO - init
+2024-05-19 10:29:15,741 - INFO - Loading and training (with CUDA)
+2024-05-19 10:29:17,573 - INFO - init
+2024-05-19 10:29:29,351 - INFO - Loading and training (with CUDA)
+2024-05-19 10:29:31,467 - INFO - init
+2024-05-19 10:29:32,047 - INFO - Time taken: 0:00:02.696009
+2024-05-19 10:30:40,262 - INFO - Loading and training (with CUDA)
+2024-05-19 10:30:41,972 - INFO - init
+2024-05-19 10:30:52,539 - INFO - Loading and training (with CUDA)
+2024-05-19 10:30:54,361 - INFO - init
+2024-05-19 10:32:19,821 - INFO - Loading and training (with CUDA)
+2024-05-19 10:32:21,653 - INFO - init
+2024-05-19 10:35:34,147 - INFO - Loading and training (with CUDA)
+2024-05-19 10:36:22,721 - INFO - Loading and training (with CUDA)
+2024-05-19 10:37:36,810 - INFO - Loading and training (with CUDA)
+2024-05-19 10:42:27,289 - INFO - Random forrest with all engineered features	
+2024-05-19 10:46:00,532 - INFO - Loading and training (with CUDA)
+2024-05-19 10:46:29,693 - INFO - Loading and training (with CUDA)
+2024-05-19 10:46:42,640 - INFO - Loading and training (with CUDA)
+2024-05-19 10:46:44,981 - INFO - Time taken: 0:00:02.341479
+2024-05-19 10:47:14,614 - INFO - Loading and training (with CUDA)
+2024-05-19 10:47:37,902 - INFO - Loading and training (with CUDA)
+2024-05-19 10:51:43,725 - INFO - Loading and training (with CUDA)
+2024-05-19 10:52:09,931 - INFO - Loading and training (with CUDA)
+2024-05-19 10:54:04,336 - INFO - Loading and training (with CUDA)
+2024-05-19 10:58:49,771 - INFO - Loading and training (with CUDA)
+2024-05-19 10:59:31,077 - INFO - State start
+2024-05-19 10:59:31,085 - INFO -   Scheduler at:     tcp://127.0.0.1:35869
+2024-05-19 10:59:31,086 - INFO -   dashboard at:  http://127.0.0.1:8787/status
+2024-05-19 10:59:31,087 - INFO - Registering Worker plugin shuffle
+2024-05-19 10:59:38,975 - INFO - State start
+2024-05-19 10:59:38,982 - INFO -   Scheduler at:     tcp://127.0.0.1:32947
+2024-05-19 10:59:38,983 - INFO -   dashboard at:  http://127.0.0.1:36927/status
+2024-05-19 10:59:38,984 - INFO - Registering Worker plugin shuffle
+2024-05-19 10:59:52,734 - INFO - State start
+2024-05-19 10:59:52,741 - INFO -   Scheduler at:     tcp://127.0.0.1:37347
+2024-05-19 10:59:52,742 - INFO -   dashboard at:  http://127.0.0.1:38295/status
+2024-05-19 10:59:52,743 - INFO - Registering Worker plugin shuffle
